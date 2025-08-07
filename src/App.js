@@ -1,7 +1,6 @@
 import React from "react"
 import {Canvas} from "@react-three/fiber"
 import {OrbitControls} from "@react-three/drei"
-import {Model} from "./components/Model"
 import {EarthOrbit} from "./components/EarthOrbit"
 import {StarsBackground} from "./components/StarsBackground"
 import {RotatingModel} from "./components/RotatingModel"
