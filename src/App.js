@@ -8,7 +8,7 @@ import {EffectComposer, Bloom} from "@react-three/postprocessing"
 import {Leva, useControls} from "leva"
 
 function App() {
-    // Bloom effect settings using Leva control panel
+    // Bloom effect settings (adjustable in Leva UI)
     const bloomSettings = useControls("Bloom", {
         threshold: {value: 0.1, min: 0, max: 1, step: 0.01},
         smoothing: {value: 0.1, min: 0, max: 1, step: 0.01},
@@ -19,16 +19,16 @@ function App() {
         <div style={{width: "100vw", height: "100vh"}}>
             <Canvas
                 camera={{position: [0, 2, 50], fov: 50}}
-                style={{background: "radial-gradient(#010a1f, #000)"}} // Space-like background
+                style={{background: "radial-gradient(#010a1f, #000)"}} // Dark space background
             >
                 {/* Lighting */}
                 <ambientLight intensity={0.5}/>
                 <directionalLight position={[5, 10, 5]} intensity={1}/>
 
-                {/* Starfield background */}
+                {/* Starfield */}
                 <StarsBackground count={1500}/>
 
-                {/* Rotating Sun (static model) */}
+                {/* Rotating Sun */}
                 <RotatingModel
                     path="/models/soleil.glb"
                     position={[0, 0, 0]}
@@ -36,10 +36,10 @@ function App() {
                     speed={0.001}
                 />
 
-                {/* Orbiting Earth (animated model) */}
+                {/* Earth orbiting around the Sun */}
                 <EarthOrbit/>
 
-                {/* Bloom postprocessing effect */}
+                {/* Post-processing effects */}
                 <EffectComposer>
                     <Bloom
                         luminanceThreshold={bloomSettings.threshold}
@@ -48,11 +48,11 @@ function App() {
                     />
                 </EffectComposer>
 
-                {/* Camera controls */}
+                {/* User camera controls */}
                 <OrbitControls/>
             </Canvas>
 
-            {/* Leva control panel for real-time tweaking */}
+            {/* Leva control panel */}
             <Leva collapsed={false}/>
         </div>
     )
